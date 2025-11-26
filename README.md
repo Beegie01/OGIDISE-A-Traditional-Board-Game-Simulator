@@ -1,24 +1,78 @@
-AN INDEPENDENT PYTHON PROJECT
+# Ogidise – A Traditional Board Game Simulator
 
-My Simulation of A Traditional Board Game - *OGIDISE*
+## Overview
 
-Here, I simulated a traditional board game that I once played growing up in Benin City, called 'Ogidise'. The game is a competition between two players (opponents) as they try to claim as many of the opponent's stones as possible. The board consists of two sides with 6 holes/pots each, making a total of 12 holes/pots. Each pot is meant to accommodate stones, and there is a total of 48 stones in play. Each side is assigned to a player based on a coin flip. 
+This project is an independent Python simulation of *Ogidise*, a traditional board game I played growing up in Benin City. The game is a head-to-head competition between two players who try to capture as many of their opponent’s stones as possible.
 
-THE GAME:
+The board is made up of two sides with 6 pits each, for a total of 12 pits. There are 48 stones in play, and each pit can hold multiple stones. A coin toss determines which player controls which side of the board and who goes first.
 
-PICK: when a player transfers the content of a pot to their hand
+---
 
-CYCLE OF DROP: while dropping stones, player drops one stone at a time going from pot 1 to pot 12 and if they still have stones after reaching 12, then they should go back to pot 1 and restart the cycle.
+## Game Components
 
-1. COIN TOSS: to determine first turn and assignment of board side to each player
+- **Board:** 12 pits arranged in a circle, numbered 1–12, 6 per player.
+- **Stones:** 48 stones in total.
+- **Players:** 2 opponents, each assigned one side of the board.
+- **Reservoir:** Each player has a “reserve” or “store” where captured stones are kept.
 
-2 BOARD FILL-UP: At the beginning, each pot (12) have 4 stones, and each has 24 stones on their side
+At the start of the game, all 12 pits contain 4 stones each, so each player effectively has 24 stones on their side.
 
-3. FIRST PLAYER TURN: The first player enters a number corresponding to the pot that they want to pick from ranging between 1 and 6 or 7 and 12 depending on their side of the board. Then, player drops stones into the next series of pots one at a time from their hand, moving in a clockwise direction (from 1 to 12). This is done across the board until their hand is empty of stones.
+---
 
-CHANGE OF PLAYER TURN: If the last stone falls into an empty pot, then the current player must stop for the next player's turn to begin. Else (if the last stone was dropped into a non-empty pot), then the current player must pick up all the stones in that last pot and continue dropping one stone at a time into each of the following pot while maintaining the cycle of drop.
+## Core Mechanics
 
-CLAIM: If the last stone droppend from hand was into any pot on the opponent's side containing three stones thereby making it four stones, then the player picks up all four stones and transfers them into their reservoir pot thereby reducing the total number of stones in play by four. After each claim, turn switches to next player. 
+### Pick
 
-WINNER:
-Generally, the player in possession of a higher number of stones (including the stones in their reserve) wins the game. An undisputable winner emerges when a player succeeds in CLAIMING more stones than the opponent by the time the total number of stones still in play gets to 16.
+- A **pick** occurs when a player chooses a pit on their own side and transfers all the stones from that pit into their hand.
+
+### Cycle of Drop
+
+- After picking, the player **drops** stones one at a time into successive pits in a clockwise direction, moving from pit 1 through pit 12.
+- If they still have stones after dropping into pit 12, they continue from pit 1 again, maintaining the same cycle of drop.
+- The player’s hand is empty when all stones picked have been dropped.
+
+### Turn Order and Coin Toss
+
+- A **coin toss** determines:
+  - Which player takes the first turn.
+  - Which side of the board (pits 1–6 or 7–12) belongs to each player.
+- On their turn, a player must choose a pit on their own side:
+  - Pits 1–6, or
+  - Pits 7–12, depending on their assigned side.
+
+---
+
+## Turn Rules
+
+1. **First Player Turn**
+   - The player selects a valid pit on their side and performs a **pick**.
+   - They then perform a **cycle of drop**, distributing stones one by one into subsequent pits.
+
+2. **Change of Turn**
+   - If the **last stone** dropped from the hand lands in an **empty pit**, the player’s turn ends and control passes to the opponent.
+   - If the **last stone** lands in a **non-empty pit**, the player immediately **picks** all stones from that pit and continues dropping, maintaining the same cycle, until their hand is empty and one of the end-of-turn conditions is met.
+
+---
+
+## Claiming Stones
+
+- A **claim** occurs when the **last stone** dropped from the hand lands in a pit on the opponent’s side that already contains **three stones**, making it four.
+- When this happens:
+  - The player collects all four stones from that pit.
+  - These stones are moved to that player’s **reservoir**.
+  - The total number of stones in active play is reduced by four.
+  - After a claim, the turn automatically switches to the other player.
+
+---
+
+## Winning the Game
+
+- Throughout the game, each player accumulates stones in their reservoir.
+- The winner is the player with the **greater total number of stones** (including their reserve) at the end.
+- An undisputable winner is determined once one player has successfully **claimed** more stones than the opponent by the time the total number of stones still in play has dropped to **16**.
+
+---
+
+## Project Notes
+
+This repository contains a Python implementation of these rules, modelling the board, turns, and capture logic as faithfully as possible to the traditional game of Ogidise.
