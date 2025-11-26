@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is an independent Python simulation of *Ogidise*, a traditional board game I played growing up in Benin City. The game is a head-to-head competition between two players who try to capture as many of their opponent’s stones as possible.
+This personal project is an independent Python simulation of *Ogidise*, a traditional board game I played growing up in Benin City. The game is a head-to-head competition between two players who try to capture as many of their opponent’s stones as possible.
 
 The board is made up of two sides with 6 pits each, for a total of 12 pits. There are 48 stones in play, and each pit can hold multiple stones. A coin toss determines which player controls which side of the board and who goes first.
 
